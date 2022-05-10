@@ -384,7 +384,8 @@ last window config."
           (eyebrowse--set 'last-slot current-slot)
           (eyebrowse--set 'current-slot slot)
           (when (and new-window-config eyebrowse-new-workspace)
-            (delete-other-windows)
+            (let ((ignore-window-parameters t))
+              (delete-other-windows))
             (cond
              ((stringp eyebrowse-new-workspace)
               (switch-to-buffer (get-buffer-create eyebrowse-new-workspace)))
